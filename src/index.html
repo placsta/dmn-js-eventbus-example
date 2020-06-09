@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example for event handling</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/dmn-js@8.3.0/dist/assets/diagram-js.css">
+    <link rel="stylesheet" href="https://unpkg.com/dmn-js@8.3.0/dist/assets/dmn-js-shared.css">
+    <link rel="stylesheet" href="https://unpkg.com/dmn-js@8.3.0/dist/assets/dmn-js-drd.css">
+    <link rel="stylesheet" href="https://unpkg.com/dmn-js@8.3.0/dist/assets/dmn-js-decision-table.css">
+    <link rel="stylesheet" href="https://unpkg.com/dmn-js@8.3.0/dist/assets/dmn-js-decision-table-controls.css">
+    <link rel="stylesheet" href="https://unpkg.com/dmn-js@8.3.0/dist/assets/dmn-js-literal-expression.css">
+    <link rel="stylesheet" href="https://unpkg.com/dmn-js@8.3.0/dist/assets/dmn-font/css/dmn.css">
+
+    <!-- modeler distro -->
+    <script src="https://unpkg.com/dmn-js@8.3.0/dist/dmn-modeler.development.js"></script>
+
+    <!-- needed for this example only -->
+    <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
+
+    <style>
+        html, body, #dmn-container {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+
+</head>
+<body>
+<div id="my-panel" style="height: 100%;">
+    <div id="dmn-container"></div>
+</div>
+<script>
+    document.getElementById("my-panel").addEventListener("click", e => {
+        e.stopPropagation();
+    });
+
+    let viewer = new DmnJS();
+
+    // attach it to some element
+    viewer.attachTo(document.getElementById('dmn-container'));
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            viewer.importXML(this.responseText, function(err) {
+
+                if (err) {
+                    console.log('error rendering', err);
+                } else {
+                    console.log('rendered');
+                }
+            });
+        }
+    };
+    xhttp.open("GET", "dummy.dmn", true);
+    xhttp.send();
+
+</script>
+</body>
+</html>

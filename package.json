@@ -1,15 +1,16 @@
 {
   "name": "dmn-js-eventbus-example",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Example for problem with event handling",
+  "main": "app.js",
   "scripts": {
+    "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/placsta/dmn-js-eventbus-example.git"
+  },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dmn-js": "^8.3.0"
-  }
+  "author": "Pascal Meier"
 }
